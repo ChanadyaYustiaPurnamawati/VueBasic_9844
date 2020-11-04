@@ -11,7 +11,7 @@
         <div id="app">
             <h1>{{ judul }}</h1> <!-- Pemanggilan judul menggunakan '{{}}'-->
 
-            <p>{{ belajar( 'Vue JS') }}</p> <!-- memanggil method belajar()-->
+            <p>{{ belajar( 'Vue JS') }}</p> <!-- memanggil method/fungsi belajar() yang isinya string Vue JS-->
             <p>
                 Klik link untuk mengakses
                 <a :href="link"> <!-- bisa v-blind:href atau :href-->
@@ -28,7 +28,7 @@
     <!-- untuk menggunakan vue js -->
     <script>
         new Vue({
-            el: '#app',
+            el: '#app', //ini buat nyambungin ke id app
             // untuk menampung data2 yang dibutuhin
             data: {
                 judul:"Hello world!", //Deklarasi judul
