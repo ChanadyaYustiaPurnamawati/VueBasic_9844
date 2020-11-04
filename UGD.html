@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="vue.js"></script>
     <style>
-        /* Chrome, Safari, Edge, Opera */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 40;
-        }
         
         /* Firefox */
         input[type=number] {
@@ -35,13 +29,13 @@
             </div>
         </div>
         <div class="text-center" v-show="benar">
-            <button class="btn btn-primary" @click="mainlagi" >Yey.Hayuk, Main Lagi</button>
+            <button class="btn btn-primary" @click="main" >Yey.Hayuk, Main Lagi</button>
         </div>
         <div class="text-center" v-show="kalah">
-            <button class="btn btn-primary" @click="mainlagi" >Anda Belum Beruntung. Yuk, Main Lagi!</button>
+            <button class="btn btn-primary" @click="main" >Anda Belum Beruntung. Yuk, Main Lagi!</button>
         </div>
         <div class="text-center" v-show="salah">
-            <button class="btn btn-warning" @click="cobalagi" >Coba lagi</button>
+            <button class="btn btn-warning" @click="coba" >Coba lagi</button>
         </div>
          
         <footer class="text-center mt-5">
@@ -83,11 +77,11 @@
             }
                
            },
-           cobalagi(){
+           coba(){
                 this.isDisabled = false;
                 this.salah = undefined;
            },
-           mainlagi(){
+           main(){
                location.reload();
            }
         },
