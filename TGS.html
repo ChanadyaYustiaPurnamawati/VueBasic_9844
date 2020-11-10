@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>TUGAS_9844</title>
+  <script src="vue.js"></script>
+  <style>
+    body{
+        background-color: rgb(18, 161, 149);
+        min-height: 100vh;
+        background-size: cover;
+      }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        opacity: 50%;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        color: black;
+        }
+
+    nav{
+        text-align: center;
+        color: teal;
+        font-size: 30px;
+        width: 100%;
+        height: 40px;
+        background:peachpuff;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <label>TUGAS Vue Basic</label>
+    </nav>
+    <div id="app">
+      <div class="d-flex justify-content-center">
+          <div class=" col-md-4 col-sm-12 mb-3 mt-4">
+            
+                <!-- Hasil -->
+                <ul v-for="(data, index) in rows" class="mt-1 mr-5">
+                    <div class="columns border bg-light" align="center">
+                        <span v-if ="data.priority == 'Penting'"> 
+                            <label class="btn-danger">{{data.priority}}</label>
+                        </span>
+                        <span v-else-if ="data.priority == 'Biasa'"> 
+                            <label class="bg-primary">{{data.priority}}</label>
+                        </span>
+                        <span v-else>
+                            <label class="bg-success">{{data.priority}}</label> 
+                        </span>
+                        <h6 style="color: black;"><b> {{data.ToDo}} </b></h6>
+                        <p style="color: black;">{{data.info}}</p>
+                        <button class="btn btn-danger btn-sm" name="cancel" @click="deleteData(index)">Delete</button>
+                    </div>
+                </ul>
+
+                <br>
+                <br>
+                <!-- Inputan -->
+                <h1 align="center" style="color: whitesmoke;">{{ judul }}</h1>
+                    <div class="field">
+                        <label>Apa yang Ingin dikerjakan ? <label><br>
+                        <div class="control">
+                           <br> <input class="input" type="text" placeholder="Input To Do" id="ToDo" v-model="ToDo">
+                        </div>
+                    </div>
+                    <div class="field" >
+                        <label >Prioritas</label>
+                            <div class="control" >
+                                <div class="select" v-model="priority" >
+                                <select name="priority" id="priority" v-model="priority" placeholder="Priority"> 
+                                    <option value="Penting">Penting</option>
+                                    <option value="Biasa">Biasa</option>
+                                    <option value="Tidak Penting">Tidak Penting</option>
+                                </select>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="field">
+                        <label>Catatan</label>
+                        <div class="columns">
+                            <div class="column" id="left">
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea class="textarea" type="textarea" placeholder="input" id="info" v-model="info"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-primary btn-sm" name="add" @click="add()">Submit</button>
+                        <button class="btn btn-danger btn-sm" name="cancel" @click="cancel()">Cancel</button>
+                    </div>
+
+              <br>
+          </div>
+      </div>
+      <br>
+        <footer>
+          <h6 align="center">{{ nama }} | {{ npm }} | {{ kelas }}</h6>
+        </footer>
+    </div>
+    
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            rows:[],
+            judul: "To Do List",
+            nama: "Chanadya Yustia Purnamawati",
+            npm: "180709844",
+            kelas: "D",
+            ToDo:'',
+            priority:'',
+            info:''
+        },
+        methods: {
+            add(){
+               if(this.ToDo == ''||this.priority == '' || this.info == '')
+               {
+                   alert("Data Kosong");
+               }else{
+                   this.rows.push({
+                   ToDo: this.ToDo,
+                   priority : this.priority,
+                   info : this.info
+                    })
+                    this.ToDo ='';
+                    this.priority='';
+                    this.info='';
+               }
+           },
+           cancel(){
+                this.ToDo ='';
+                this.priority='';
+                this.info='';
+            },
+            deleteData(index){
+                this. rows.splice(index, 1)
+            }
+        },
+    })
+</script>
+</html>
